@@ -1,4 +1,4 @@
-// Copyright 2018 The Crashpad Authors. All rights reserved.
+// Copyright 2019 The Crashpad Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,28 +12,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef CRASHPAD_COMPAT_ANDROID_ANDROID_API_LEVEL_H_
-#define CRASHPAD_COMPAT_ANDROID_ANDROID_API_LEVEL_H_
+#ifndef CRASHPAD_COMPAT_LINUX_SYS_MMAN_H_
+#define CRASHPAD_COMPAT_LINUX_SYS_MMAN_H_
 
-#include_next <android/api-level.h>
-#include <android/ndk-version.h>
+#include_next <sys/mman.h>
 
-#include <sys/cdefs.h>
+#include <features.h>
 
-#if __NDK_MAJOR__ < 20
+// There's no memfd_create() wrapper before glibc 2.27.
+// This can't select for glibc < 2.27 because linux-chromeos-rel bots build this
+// code using a sysroot which has glibc 2.27, but then run it on Ubuntu 16.04,
+// which doesn't.
+#if defined(__GLIBC__)
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-// Returns the API level of the device or -1 if it can't be determined. This
-// function is provided by NDK r20.
-int android_get_device_api_level();
+int memfd_create(const char* name, unsigned int flags);
 
 #ifdef __cplusplus
 }  // extern "C"
 #endif
 
-#endif  // __NDK_MAJOR__ < 20
+#endif  // __GLIBC__
 
-#endif  // CRASHPAD_COMPAT_ANDROID_ANDROID_API_LEVEL_H_
+#endif  // CRASHPAD_COMPAT_LINUX_SYS_MMAN_H_

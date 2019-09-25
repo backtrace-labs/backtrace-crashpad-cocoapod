@@ -11,6 +11,7 @@ cd vendor
 git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 export PATH=$PATH:${PWD}/depot_tools
 fetch Crashpad
+gclient sync
 
 ### Build Crashpad
 cd crashpad
