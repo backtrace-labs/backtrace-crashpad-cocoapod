@@ -1,5 +1,5 @@
 # Backtrace-Crashpad
-[Backtrace](http://backtrace.io/)'s binary package for [Crashpad](https://github.com/backtrace-labs/crashpad) with modifications provided by [Backtrace I/O](https://backtrace.io).
+[Backtrace](http://backtrace.io/)'s binary package for [Crashpad](https://github.com/backtrace-labs/crashpad) with modifications provided by [Backtrace](https://backtrace.io).
 
 ## Crashpad
 

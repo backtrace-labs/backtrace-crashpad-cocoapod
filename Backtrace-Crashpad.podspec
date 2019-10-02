@@ -1,11 +1,11 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "Backtrace-Crashpad"
-  spec.version      = "0.0.1"
-  spec.summary      = "Binary package for Crashpad, with modifications provided by Backtrace IO."
+  spec.version      = "0.0.2"
+  spec.summary      = "Binary package for Crashpad, with modifications provided by Backtrace."
 
   spec.description  = <<-DESC
-  Binary package for Crashpad for crash reporting, with modifications provided by Backtrace IO.
+  Binary package for Crashpad for crash reporting, with modifications provided by Backtrace.
                    DESC
 
   spec.homepage     = "https://github.com/backtrace-labs/backtrace-crashpad-cocoapod"
